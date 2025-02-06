@@ -11,7 +11,7 @@ const SignUpPage = () => {
     const [email, setEmail] = useState(emailValue || "");
     const [password, setPassword] = useState("");
 
-    const {signup} = useAuthStore();
+    const {signup, isSigninUp} = useAuthStore();
 
     const handleSignup = async (e) => {
         e.preventDefault();
@@ -80,8 +80,10 @@ const SignUpPage = () => {
               />
             </div>
 
-            <button type="submit" className="w-full py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700">
-                Sign Up
+            <button type="submit" className="w-full py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700"
+            disabled={isSigninUp}
+            >
+                {isSigninUp ? "Loading..." : "Sign Up"}
             </button>
           </form>
           <div className="text-center text-gray-700">
